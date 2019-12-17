@@ -1,6 +1,9 @@
 #include <unistd.h>
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
+#include <sys/types.h>
+       #include <sys/wait.h>
+
 
 #define SO_NUM_G 2
 #define SO_NUM_P 10
@@ -22,18 +25,21 @@ int main(){
 
     for(i=0 ;i<SO_NUM_G;i++,ptr++){ 
        switch(*ptr = fork()){
-           case -1: 
+           case -1: {
            printf("error\n");
-           break;
+           exit(0);
+           }
 
            case 0: /*Processo figlio*/
+            //printf("figliotest\n");
+            execve("./player", NULL, NULL);
+            printf("errore");
+            exit(1);
 
-           exit(1);
-            
-
-           default:printf("I=%d, SO_NUM_G: %d, processo n: %d, padre: %d\n",i,SO_NUM_G,getpid(),getppid()); break;
+            default:printf("I=%d, SO_NUM_G: %d, processo n: %d, padre: %d\n",i,SO_NUM_G,getpid(),getppid()); break;
        } 
        
     }
 
+    while (wait(NULL) != -1);
 }
