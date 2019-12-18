@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
-       #include <sys/wait.h>
+#include <sys/wait.h>
+#include <sys/shm.h>
 
 
 #define SO_NUM_G 2
@@ -20,6 +21,12 @@ int main(){
     int i;
     pid_t players[SO_NUM_G];
     int *ptr = players;
+    char matrix[SO_BASE*SO_ALTEZZA];
+    char *matr_point = matrix;
+    int flag_n = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN; 
+
+    int shm_id = shmget (IPC_PRIVATE, sizeof(int)*sizeof(*matr_point),0600);
+    matr_point = shmat(shm_id, NULL, 0);
 
     printf("master process: %d\n",getpid());
 
@@ -31,12 +38,31 @@ int main(){
            }
 
            case 0: /*Processo figlio*/
-            //printf("figliotest\n");
+            
+            printf("pid GIOCATORE : %d\n", getpid());
             execve("./player", NULL, NULL);
-            printf("errore");
             exit(1);
+            break;
 
-            default:printf("I=%d, SO_NUM_G: %d, processo n: %d, padre: %d\n",i,SO_NUM_G,getpid(),getppid()); break;
+            default: break;
+       } 
+       
+    }
+
+       for(i=0 ;i<flag_n;i++,ptr++){ 
+       switch(*ptr = fork()){
+           case -1: {
+           printf("error\n");
+           exit(0);
+           }
+
+           case 0: /*Processo figlio*/
+            
+            execve("./bandierina", NULL, NULL);
+            exit(1);
+            break;
+
+            default: break;
        } 
        
     }
