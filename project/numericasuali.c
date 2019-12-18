@@ -31,8 +31,10 @@ int main(){
     srand(time(NULL));
     for(i=0;i<flag;i++){
     	max_rand = tot-(tmp-1);
-    	band = (rand() % (max_rand))+1;
-    	tot= tot - band;
+    	if(tmp != 1)
+        band = (rand() % (max_rand))+1;
+    	else band = tot;
+        tot= tot - band;
     	printf("TOT:%d -- FLAG:%d -- BAND: %d\n",tot,tmp,band);
     	tmp--;
     }

@@ -21,12 +21,12 @@ int main(){
     int i;
     pid_t players[SO_NUM_G];
     int *ptr = players;
-    char matrix[SO_BASE*SO_ALTEZZA];
-    char *matr_point = matrix;
+    char *matrix;
     int flag_n = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN; 
+    key_t key = 12345;
 
-    int shm_id = shmget (IPC_PRIVATE, sizeof(int)*sizeof(*matr_point),0600);
-    matr_point = shmat(shm_id, NULL, 0);
+    int shm_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0600);
+    matrix = shmat(shm_id, NULL, 0);
 
     printf("master process: %d\n",getpid());
 
