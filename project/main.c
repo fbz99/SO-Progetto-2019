@@ -28,18 +28,19 @@ int main(){
     int shm_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0600);
     matrix = shmat(shm_id, NULL, 0);
 
-    printf("master process: %d\n",getpid());
+    printf("Master process: %d\n",getpid());
 
+
+    /*Creazione Giocatori*/
     for(i=0 ;i<SO_NUM_G;i++,ptr++){ 
        switch(*ptr = fork()){
            case -1: {
-           printf("error\n");
+           printf("Error\n");
            exit(0);
            }
 
            case 0: /*Processo figlio*/
-            
-            printf("pid GIOCATORE : %d\n", getpid());
+            printf("PID Giocatore : %d\n", getpid());
             execve("./player", NULL, NULL);
             exit(1);
             break;
@@ -49,23 +50,7 @@ int main(){
        
     }
 
-       for(i=0 ;i<flag_n;i++,ptr++){ 
-       switch(*ptr = fork()){
-           case -1: {
-           printf("error\n");
-           exit(0);
-           }
-
-           case 0: /*Processo figlio*/
-            
-            execve("./bandierina", NULL, NULL);
-            exit(1);
-            break;
-
-            default: break;
-       } 
-       
-    }
+    execve("./bandierina",NULL,NULL);	/*Riporta al file in cui vengono create le bandierine*/
 
     while (wait(NULL) != -1);
 }
