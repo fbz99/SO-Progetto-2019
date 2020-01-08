@@ -2,7 +2,7 @@
 # un commento
 #
 # flags per la compilazione
-CFLAGS = -std=c89 -pedantic 
+CFLAGS = -std=c89 -pedantic -g
 
 # con "make clean" solitamente si vogliono eliminare i prodotti della
 # compilazione e ripristinare il contenuto originale

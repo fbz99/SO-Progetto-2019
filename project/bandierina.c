@@ -28,7 +28,7 @@ int main(){
     int band, i, j, pos, rand_pos;
     int tmp = flag;
     key_t key = 12345;
-    int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0600);
+    int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0666);
     mtr = &matrice[0]; 
     mtr = shmat(mat_id, NULL, 0);
     

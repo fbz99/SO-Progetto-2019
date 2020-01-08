@@ -1,9 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/shm.h>
+#include "Libreria.h"
 
 
 #define SO_NUM_G 2
@@ -31,6 +26,7 @@ int main(){
     int band, j=0, rand_pos, pos;
     int tmp = flag;
     int mat_id = shmget (key, (sizeof(int)*(SO_BASE)*(SO_ALTEZZA)), IPC_CREAT | 0666);
+    char * args [2]; 
     matrice = shmat(mat_id, NULL, 0);
 
 
@@ -48,8 +44,9 @@ int main(){
            }
 
            case 0: /*Processo figlio*/
+            *args[0]= (char)i;
             printf("PID Giocatore : %d\n", getpid());
-            execve("./player", NULL, NULL);
+            execve("./player", args, NULL);
             exit(1);
             break;
 
