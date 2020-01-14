@@ -1,11 +1,5 @@
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/shm.h>
-#include <time.h>
+#include "Libreria.h"
 
 #define SO_NUM_G 2
 #define SO_NUM_P 10
@@ -32,26 +26,31 @@ int main(){
     mtr = &matrice[0]; 
     mtr = shmat(mat_id, NULL, 0);
     
-    for(mtr=&matrice[0];*mtr;mtr++){
-        *mtr='0';
-    }
+    for(i=0;i<SO_ALTEZZA*SO_BASE;i++) matrice[i] = '0';
 
-    /*printf("%d\n",flag);*/
+    
     srand(time(NULL));
-    for(i=0;i<flag;i++){
+    printf("flag: %d  --  tmp: %d\n",flag,tmp);
+    for(i=0;i<5;i++){
         rand_pos = casuale(size, 0);
+        printf("RAND_POS: %d\n", rand_pos);
     	max_rand = tot-(tmp-1);
     	if(tmp != 1)
         band = casuale(max_rand,1);
     	else band = tot;
         tot = tot - band;
         matrice[rand_pos] = band;
-        printf("TOT:%d -- FLAG:%d -- BAND: %d\n",tot,tmp,band);
+        
     	tmp--;
+        printf("TOT:%d -- TMP:%d -- BAND: %d\n",tot,tmp,band);
     }
+for(i=0;i<SO_ALTEZZA*SO_BASE;i++){
+			printf("|%d", matrice[i]);}
+stampa_scacchiera();
+    /*
 for (j=0;j<size;j++){
-            printf("posizione %d - valore %c - rand_pos %d\n", j, matrice[rand_pos], rand_pos);         
-        }
+            printf("matrice[%d] - %d\n", j, matrice[j]);         
+        }*/
     while (wait(NULL) != -1);
 }
 

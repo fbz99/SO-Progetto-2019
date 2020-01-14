@@ -4,7 +4,7 @@
 #define SO_NUM_G 2
 #define SO_NUM_P 10
 #define SO_MAX_TIME 3
-#define SO_BASE 5
+#define SO_BASE 6
 #define SO_ALTEZZA 2
 #define SO_FLAG_MIN 5
 #define SO_FLAG_MAX 5
@@ -17,7 +17,6 @@ int main(){
     int i, size = SO_ALTEZZA*SO_BASE;
     pid_t players[SO_NUM_G];
     int *ptr = players;
-    int *matrice;
     int flag_n = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN; 
     key_t key = 12345;
     int tot = SO_ROUND_SCORE;
@@ -25,10 +24,12 @@ int main(){
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int band, j=0, rand_pos, pos;
     int tmp = flag;
-    int mat_id = shmget (key, (sizeof(int)*(SO_BASE)*(SO_ALTEZZA)), IPC_CREAT | 0666);
     char * args [2]; 
-    matrice = shmat(mat_id, NULL, 0);
-
+    char matrice[SO_ALTEZZA*SO_BASE];
+    char *mtr;            
+    int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0666);
+    mtr = &matrice[0]; 
+    mtr = shmat(mat_id, NULL, 0);
 
        	for (pos = 0; pos < size; pos++) /*SETTAGGIO MATRICE*/
 		matrice[pos] = 0;
@@ -44,13 +45,16 @@ int main(){
            }
 
            case 0: /*Processo figlio*/
+           printf("caacacacacaca");
             *args[0]= (char)i;
             printf("PID Giocatore : %d\n", getpid());
             execve("./player", args, NULL);
             exit(1);
             break;
 
-            default: break;
+            default: printf("default fork\n");
+            
+            break;
        } 
        
     }
