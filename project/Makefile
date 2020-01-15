@@ -6,7 +6,7 @@ CFLAGS = -std=c89 -pedantic -g
 
 # con "make clean" solitamente si vogliono eliminare i prodotti della
 # compilazione e ripristinare il contenuto originale
-all: main bandierina player 
+all: main bandierina player pedina
 
 clean:
 	rm -f *.o main bandierina player *~
@@ -21,6 +21,8 @@ player: player.c Makefile
 bandierina: bandierina.c Makefile
 	gcc $(CFLAGS) bandierina.c -o bandierina
 
+pedina: pedina.c Makefile
+	gcc $(CFLAGS) pedina.c -o pedina
 # il target run si usa talvolta per eseguire l'applicazione
 run:  all
 	./main

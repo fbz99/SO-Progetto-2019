@@ -38,7 +38,7 @@ int main(){
 
     /*printf("%d\n",flag);*/
     srand(time(NULL));
-    for(i=0;i<flag;i++){
+    for(i=0;i<tmp;i++){
         rand_pos = casuale(size, 0);
     	max_rand = tot-(tmp-1);
     	if(tmp != 1)
