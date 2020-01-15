@@ -50,10 +50,10 @@ void stampa_scacchiera(){
 		
 		}*/
 		
-		for(i=0; i<SO_BASE;i++)printf(" __");
+		/*for(i=0; i<SO_BASE;i++)printf(" __");
 		printf("\n");
 		for(i=0;i<SO_ALTEZZA*SO_BASE;i++){
-			printf("|%d - %c",i, matrice[i]);}
+			printf("|%d - %c",i, matrice[i]);}*/
 	printf("\n");
 	}
 
