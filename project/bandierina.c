@@ -1,16 +1,6 @@
 
 #include "Libreria.h"
 
-#define SO_NUM_G 2
-#define SO_NUM_P 10
-#define SO_MAX_TIME 3
-#define SO_BASE 6
-#define SO_ALTEZZA 2
-#define SO_FLAG_MIN 5
-#define SO_FLAG_MAX 5
-#define SO_ROUND_SCORE 10
-#define SO_N_MOVES 20
-#define SO_MIN_HOLD_NSEC 10000000
 int casuale();
 int main(){
     
@@ -44,12 +34,9 @@ int main(){
     	tmp--;
         printf("TOT:%d -- TMP:%d -- BAND: %d\n",tot,tmp,band);
     }
-for(i=0;i<SO_ALTEZZA*SO_BASE;i++){
-			printf("|%d", matrice[i]);}
-stampa_scacchiera();
     /*
-for (j=0;j<size;j++){
-            printf("matrice[%d] - %d\n", j, matrice[j]);         
+    for (j=0;j<size;j++){
+        printf("matrice[%d] - %d\n", j, matrice[j]);         
         }*/
     while (wait(NULL) != -1);
 }

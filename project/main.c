@@ -1,17 +1,5 @@
 #include "Libreria.h"
 
-
-#define SO_NUM_G 2
-#define SO_NUM_P 10
-#define SO_MAX_TIME 3
-#define SO_BASE 6
-#define SO_ALTEZZA 2
-#define SO_FLAG_MIN 5
-#define SO_FLAG_MAX 5
-#define SO_ROUND_SCORE 10
-#define SO_N_MOVES 20
-#define SO_MIN_HOLD_NSEC 10000000
-
 int casuale();
 int main(){
     int i, size = SO_ALTEZZA*SO_BASE;
@@ -45,7 +33,6 @@ int main(){
            }
 
            case 0: /*Processo figlio*/
-           printf("caacacacacaca");
             *args[0]= (char)i;
             printf("PID Giocatore : %d\n", getpid());
             execve("./player", args, NULL);
@@ -59,25 +46,6 @@ int main(){
        
     }
 
-        /*
-        CREAZIONE E POSIZIONAMENTO DELLE BANDIERINE
-        printf("%d\n",flag);*/
-    /*srand(time(NULL));
-    for(i=0;i<flag;i++){
-
-        rand_pos = casuale(0, size);
-    	max_rand = tot-(tmp-1);
-    	if(tmp != 1)
-        band = casuale(max_rand,1);
-    	else band = tot;
-        tot = tot - band;
-        matrice[rand_pos] = band;
-        for (j;j<SO_BASE*SO_ALTEZZA;j++){
-            printf("posizione %d - valore %c - pid = %d - rand_pos %d\n", j, matrice[rand_pos],getpid(), rand_pos);         
-       }
-    	printf("TOT:%d -- FLAG:%d -- BAND: %d\n",tot,tmp,band);
-    	tmp--;
-    }*/
     execve("./bandierina",NULL,NULL);
 
 

@@ -8,8 +8,8 @@
 #define SO_NUM_G 2
 #define SO_NUM_P 10
 #define SO_MAX_TIME 3
-#define SO_BASE 6
-#define SO_ALTEZZA 2
+#define SO_BASE 60
+#define SO_ALTEZZA 20
 #define SO_FLAG_MIN 5
 #define SO_FLAG_MAX 5
 #define SO_ROUND_SCORE 10
@@ -48,12 +48,12 @@ void stampa_scacchiera(){
 
 		}
 		
-		}
+		}*/
 		
-	*/
 		for(i=0; i<SO_BASE;i++)printf(" __");
 		printf("\n");
 		for(i=0;i<SO_ALTEZZA*SO_BASE;i++){
-			printf("|%d", matrice[i]);}
+			printf("|%d - %c",i, matrice[i]);}
 	printf("\n");
 	}
+
