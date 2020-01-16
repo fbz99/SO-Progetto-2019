@@ -1,7 +1,5 @@
 #include "Libreria.h"
 
-int casuale();
-void stampa_scacchiera();
 
 int main(){
     int i, size = SO_ALTEZZA*SO_BASE;
@@ -18,13 +16,12 @@ int main(){
     char stringa[4];       
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT |0666);
     matrice = shmat(mat_id, NULL, 0);
-    printf("------------------ MAIN ----------------\n");
-
+   
        	for (pos = 0; pos < size; pos++) /*SETTAGGIO MATRICE*/
 		matrice[pos] = 0;
-        stampa_scacchiera();
+        /*stampa_scacchiera();*/
         
-    printf("Master process: %d\n",getpid());
+    /*printf("Master process: %d\n",getpid());*/
 
 
     args[1]=NULL;
@@ -32,15 +29,15 @@ int main(){
     /*Creazione Giocatori*/
     for(i=0 ;i<SO_NUM_G;i++){ 
        switch(ptr[i] = fork()){
-           case -1: {
+           case -1: 
            printf("Error\n");
            exit(0);
-           }
+           
 
            case 0: /*Processo figlio*/
             sprintf(stringa, "%d", i+1);
             args[0]= stringa;
-            printf("PID Giocatore : %d\n", getpid());
+            /*printf("PID Giocatore : %d\n", getpid());*/
             execve("./player", args, NULL);
             
 
@@ -56,25 +53,7 @@ int main(){
     while (wait(NULL) != -1);
 }
 
-int casuale(int a,int b)  
-{  
-    return rand() % (b - a + 1) + a;
-}  
 
 
-void stampa_scacchiera(){
-	int i,j;
-    char *matrice;                                          
-    key_t key = 12345;
-    int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT | 0666);
-    matrice = shmat(mat_id, NULL, 0);
 
-		
-		for(i=0; i<SO_BASE;i++)printf(" __");
-		printf("\n");
-		for(i=0;i<SO_ALTEZZA*SO_BASE;i++){
-			if(i%SO_BASE == 0) printf("\n");
-            printf("|%d - %d",i, matrice[i]);}
-	    printf("\n");
-	}
 
