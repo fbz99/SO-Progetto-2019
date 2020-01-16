@@ -3,8 +3,7 @@
 int casuale();
 int main(){
     int i, size = SO_ALTEZZA*SO_BASE;
-    pid_t players[SO_NUM_G];
-    int *ptr = players;
+    int *ptr;
     int flag_n = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN; 
     key_t key = 12345;
     int tot = SO_ROUND_SCORE;
@@ -14,7 +13,8 @@ int main(){
     int tmp = flag;
     char * args [2]; 
     char matrice[SO_ALTEZZA*SO_BASE];
-    char *mtr;            
+    char *mtr;     
+    char stringa[4];       
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0666);
     mtr = &matrice[0]; 
     mtr = shmat(mat_id, NULL, 0);
@@ -24,24 +24,25 @@ int main(){
     printf("Master process: %d\n",getpid());
 
 
+    args[1]=NULL;
+    ptr = malloc(sizeof(int)*SO_NUM_G);
     /*Creazione Giocatori*/
-    for(i=0 ;i<SO_NUM_G;i++,ptr++){ 
-       switch(*ptr = fork()){
+    for(i=1 ;i<=SO_NUM_G;i++,ptr++){ 
+       switch(ptr[i] = fork()){
            case -1: {
            printf("Error\n");
            exit(0);
            }
 
            case 0: /*Processo figlio*/
-            *args[0]= (char)i;
+            sprintf(stringa, "%d", i);
+            args[0]= stringa;
             printf("PID Giocatore : %d\n", getpid());
             execve("./player", args, NULL);
-            exit(1);
-            break;
-
-            default: printf("default fork\n");
             
-            break;
+
+            /*default: printf("default fork\n");
+            break;*/
        } 
        
     }
