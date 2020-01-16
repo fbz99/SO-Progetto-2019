@@ -15,7 +15,7 @@ int main(){
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA),0666);
     mtr = &matrice[0]; 
     mtr = shmat(mat_id, NULL, 0);
-    
+    printf("------------------ BANDIERINA ----------------\n");
     for(i=0;i<SO_ALTEZZA*SO_BASE;i++) matrice[i] = '0';
 
     
