@@ -42,24 +42,21 @@ void stampa_scacchiera(){
 	}
 	
 	/*STRUTTURA CENTRALE*/
-	for(i=0;i<SO_ALTEZZA*SO_BASE;i++){
+	for(i=1;i<=SO_ALTEZZA*SO_BASE;i++){
 	
-	   	if(matrice[i] == '0')printf("|  ",matrice[i]);
-		else printf("| %d",matrice[i]);
+	   	if(i%SO_BASE != 0){
+		   	if(matrice[i] == '0')printf("|  ",matrice[i]);
+			else printf("| %d",matrice[i]);
+		}
 				
-		if(i%SO_BASE == 0){	
-		printf("|\n");
+		else if(i%SO_BASE == 0){	
+			printf("|\n");
 			for(j=0; j<SO_BASE;j++){
 				if(j==SO_BASE-1)printf("+\n");
 				else printf("+--");
 			}
 		} 
-		}
-		printf("\n");
-	
-	/*ULTIMA RIGA*/	
-	for(i=0; i<SO_BASE;i++){
-		if(i==SO_BASE-1)printf("+\n");
-		else printf("+--");
 	}
+	printf("\n");
+	
 }
