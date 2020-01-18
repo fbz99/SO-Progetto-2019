@@ -10,13 +10,14 @@ int main(){
     int max_rand, size = SO_ALTEZZA*SO_BASE ;
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int band, i, j, pos, rand_pos;
-    int old_pos[flag];
+    int *old_pos;
     int tmp = flag;
     key_t key = 12345;
     char *matrice;        
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
     
+    old_pos = malloc(sizeof(int)*flag);
     for(i=0;i<SO_ALTEZZA*SO_BASE;i++) matrice[i] = '0';
 
     
@@ -34,12 +35,15 @@ int main(){
     	else band = tot;
         tot = tot - band;
         
-        
+        if(band!=0)
         matrice[rand_pos] = band;
         
     	tmp--;
         
     }
+    /*------------------------------ TI PREGO RISOLVIAMOLO SE NO SUCCEDE UN CASINO ------------------------------*/
+    matrice[SO_BASE*SO_ALTEZZA]= '0'; 
+    /*------------------------------ TI PREGO RISOLVIAMOLO SE NO SUCCEDE UN CASINO ------------------------------*/
     stampa_scacchiera();
     while (wait(NULL) != -1);
 }
@@ -49,7 +53,7 @@ int casuale(int a,int b)
     return rand() % (a - b + 1) + b;
 }  
 
-int val_check(int val, int pos[]){
+int val_check(int val, int *pos){
     int i;
     int ver = 0;
     size_t n = sizeof(pos) / sizeof(pos[0]);

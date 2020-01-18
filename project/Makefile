@@ -8,8 +8,12 @@ CFLAGS = -std=c89 -pedantic -g
 # compilazione e ripristinare il contenuto originale
 all: main bandierina player pedina 
 
+
 clean:
 	rm -f *.o main bandierina player pedina *~
+
+Libreria:
+	gcc -c Libreria.c 
 
 main: main.c  Makefile
 	gcc $(CFLAGS) main.c -o main

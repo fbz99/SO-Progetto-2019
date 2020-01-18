@@ -16,6 +16,13 @@
 #define SO_N_MOVES 20
 #define SO_MIN_HOLD_NSEC 10000000
 
+void stampa_scacchiera();
+void red();
+void yellow();
+void blue();
+void magenta();
+void reset();
+
 struct stato_player{
 	int pid;
 	char giocatore;
@@ -38,25 +45,51 @@ void stampa_scacchiera(){
 	/*PRIMA RIGA*/	
 	for(i=0; i<SO_BASE;i++){
 		if(i==SO_BASE-1)printf("+\n");
-		else printf("+--");
+		else printf("+---");
 	}
 	
 	/*STRUTTURA CENTRALE*/
 	for(i=1;i<=SO_ALTEZZA*SO_BASE;i++){
 	
 	   	if(i%SO_BASE != 0){
-		   	if(matrice[i] == '0')printf("|  ",matrice[i]);
-			else printf("| %d",matrice[i]);
+		   	if(matrice[i] == '0')printf("|   ",matrice[i]);
+			else {
+               				printf("|");
+			red();
+			printf(" %d ",matrice[i]);
+			reset();
+            }
 		}
 				
 		else if(i%SO_BASE == 0){	
 			printf("|\n");
 			for(j=0; j<SO_BASE;j++){
 				if(j==SO_BASE-1)printf("+\n");
-				else printf("+--");
+				else printf("+---");
 			}
 		} 
 	}
 	printf("\n");
 	
 }
+
+void red () {
+  printf("\033[1;31m");
+}
+
+void yellow() {
+  printf("\033[1;33m");
+}
+
+void blue(){
+printf("\033[0;34m");
+}
+
+void magenta(){
+printf("\033[0;35m");
+}
+
+void reset () {
+  printf("\033[0m");
+}
+

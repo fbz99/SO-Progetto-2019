@@ -18,7 +18,7 @@ int main(){
     matrice = shmat(mat_id, NULL, 0);
    
        	for (pos = 0; pos < size; pos++) /*SETTAGGIO MATRICE*/
-		matrice[pos] = 0;
+		matrice[pos] = '0';
         /*stampa_scacchiera();*/
         
     /*printf("Master process: %d\n",getpid());*/
@@ -49,11 +49,9 @@ int main(){
 
     execve("./bandierina",NULL,NULL);
 
-
+    /*shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
 }
-
-
 
 
 
