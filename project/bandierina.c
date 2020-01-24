@@ -4,8 +4,7 @@
 int casuale();
 int val_check();
 
-int main(){
-    
+int main(){    
     int tot = SO_ROUND_SCORE;
     int max_rand, size = SO_ALTEZZA*SO_BASE ;
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
@@ -41,22 +40,5 @@ int main(){
     	tmp--;
         
     }
-    /*------------------------------ TI PREGO RISOLVIAMOLO SE NO SUCCEDE UN CASINO ------------------------------*/
-    matrice[SO_BASE*SO_ALTEZZA]= '0'; 
-    /*------------------------------ TI PREGO RISOLVIAMOLO SE NO SUCCEDE UN CASINO ------------------------------*/
-    stampa_scacchiera();
     while (wait(NULL) != -1);
-}
-
-int casuale(int a,int b)  
-{  
-    return rand() % (a - b + 1) + b;
-}  
-
-int val_check(int val, int *pos){
-    int i;
-    int ver = 0;
-    size_t n = sizeof(pos) / sizeof(pos[0]);
-    for(i; i<n; i++)if(pos[i] == val)ver = 1;
-    return ver;
 }

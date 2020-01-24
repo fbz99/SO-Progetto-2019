@@ -4,9 +4,10 @@
 # flags per la compilazione
 CFLAGS = -std=c89 -pedantic -g
 
+
 # con "make clean" solitamente si vogliono eliminare i prodotti della
 # compilazione e ripristinare il contenuto originale
-all: main bandierina player pedina 
+all: Libreria main bandierina player pedina 
 
 
 clean:
@@ -16,17 +17,17 @@ Libreria:
 	gcc -c Libreria.c 
 
 main: main.c  Makefile
-	gcc $(CFLAGS) main.c -o main
+	gcc $(CFLAGS) main.c Libreria.o -o main
 
 player: player.c Makefile
-	gcc $(CFLAGS) player.c -o player
+	gcc $(CFLAGS) player.c Libreria.o -o player
 
 
 bandierina: bandierina.c Makefile
-	gcc $(CFLAGS) bandierina.c -o bandierina
+	gcc $(CFLAGS) bandierina.c Libreria.o -o bandierina
 	
 pedina: pedina.c Makefile
-	gcc $(CFLAGS) pedina.c -o pedina
+	gcc $(CFLAGS) pedina.c Libreria.o -o pedina
 
 # il target run si usa talvolta per eseguire l'applicazione
 run:  all
