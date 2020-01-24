@@ -12,7 +12,7 @@ int main(int argc,const char *args[]){
     matrice = shmat(mat_id, NULL, 0);
     /*Definizione stato (Struct)*/
     giocatore.pid=getpid();
-    giocatore.giocatore = (atoi(args[0]));
+    giocatore.giocatore =  (atoi(args[0]))+64;
 
     /*sem_id_zero = semget(key0,4, IPC_CREAT | 0666);
     */
@@ -41,12 +41,12 @@ int main(int argc,const char *args[]){
     /*Inserimento pedine in posizione casuale*/
     old_pos = malloc(sizeof(int)*SO_NUM_P);
     for(i=0;i<SO_NUM_P;i++){
-        rand_pos = casuale(SO_NUM_G*SO_NUM_P, 0);
+        rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
+        printf("rand_pos - %d\n", rand_pos);
         old_pos[i]=rand_pos;
-        if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(SO_NUM_P*SO_NUM_G,0);
+        if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(SO_BASE * SO_ALTEZZA,0);
         matrice[rand_pos] = giocatore.giocatore;
     }
     sem_reserve(sem_id_zero,0);
-   stampa_scacchiera();
     while (wait(NULL) != -1);
 }

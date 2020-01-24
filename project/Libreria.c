@@ -7,7 +7,10 @@ void stampa_scacchiera(){
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
 
-	/*PRIMA RIGA*/	
+		
+	
+	yellow();
+	/*PRIMA RIGA*/
 	for(i=0; i<SO_BASE;i++){
 		if(i==SO_BASE-1)printf("+\n");
 		else printf("+---");
@@ -20,9 +23,17 @@ void stampa_scacchiera(){
 		   	if(matrice[i] == '0')printf("|   ");
 			else {
                				printf("|");
-			red();
-			printf(" %d ",matrice[i]);
+			if(matrice[i] >= '0' && matrice[i]<='9'){
 			reset();
+			
+			} 
+			else if(matrice[i] >= 'A'- 1 && matrice[i]<='Z') {
+			reset();
+				blue();
+			}
+
+			printf(" %c ",matrice[i]);
+		yellow();
             }
 		}
 				
