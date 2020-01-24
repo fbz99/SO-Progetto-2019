@@ -11,6 +11,7 @@ int main(){
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int band, j=0, rand_pos, pos;
     int tmp = flag;
+    int *old_pos;
     char * args [2]; 
     char *matrice;     
     char stringa[4];  
@@ -48,8 +49,8 @@ int main(){
            case 0: /*Processo figlio*/
             sprintf(stringa, "%d", i+1);
             args[0]= stringa;
-            printf("PID Giocatore : %d\n", getpid());
-            execve("./player", args, NULL);
+            /*printf("PID Giocatore : %d\n", getpid());
+            */execve("./player", args, NULL);
             
 
             /*default: printf("default fork\n");
@@ -59,10 +60,33 @@ int main(){
     }
     sem_set_val(sem_id_zero, 0 ,SO_NUM_G);
     sem_set_val(sem_id_zero,2,1);
-    aspetta_zero(sem_id_zero,0);
-    execve("./bandierina",NULL,NULL);
+    /*aspetta_zero(sem_id_zero,0);
+    */
+    old_pos = malloc(sizeof(int)*flag);
 
-    stampa_scacchiera();
+    
+    srand(time(NULL));
+    for(i=0;i<flag;i++){
+        
+        rand_pos = casuale(size, 0);
+        old_pos[i]=rand_pos;
+        if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(size,0);
+        
+    	max_rand = tot-(tmp-1);
+    	if(tmp != 1){
+            band = casuale(max_rand,1);
+        }
+    	else band = tot;
+        tot = tot - band;
+        
+        if(band!=0)
+        matrice[rand_pos] = band;
+        
+    	tmp--;
+        
+    }
+
+    
     /*shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
 }

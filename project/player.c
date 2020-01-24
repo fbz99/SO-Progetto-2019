@@ -14,8 +14,8 @@ int main(int argc,const char *args[]){
     giocatore.pid=getpid();
     giocatore.giocatore = (atoi(args[0]));
 
-    sem_id_zero = semget(key0,4, IPC_CREAT | 0666);
-    
+    /*sem_id_zero = semget(key0,4, IPC_CREAT | 0666);
+    */
     ptr = malloc(sizeof(int)*SO_NUM_P);
     args1[0] = NULL;
     for(i=0 ;i<SO_NUM_P;i++){ 
@@ -47,5 +47,6 @@ int main(int argc,const char *args[]){
         matrice[rand_pos] = giocatore.giocatore;
     }
     sem_reserve(sem_id_zero,0);
+   stampa_scacchiera();
     while (wait(NULL) != -1);
 }
