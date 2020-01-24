@@ -21,6 +21,7 @@ int main(int argc,const char *args[]){
            case 0: /*Processo figlio*/
             
             /*printf("I=%d, SO_NUM_G: %d, processo n: %d, padre: %d\n",i,SO_NUM_G,getpid(),getppid()); */
+            
             execve("./pedina", NULL, NULL);
             exit(1);
 
