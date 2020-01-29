@@ -6,13 +6,13 @@ int main(int argc,const char *args[]){
     int *ptr;
     int *old_pos;
     char *args1[1];
-    char *matrice;    
+    char *matrice;
     int sem_id_mat, sem_id_mutex, sem_id_zero;     
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT |0666);
     matrice = shmat(mat_id, NULL, 0);
     /*Definizione stato (Struct)*/
     giocatore.pid=getpid();
-    giocatore.giocatore =  (atoi(args[0]))+64;
+    giocatore.giocatore = (atoi(args[0]));
 
     /*sem_id_zero = semget(key0,4, IPC_CREAT | 0666);
     */
@@ -38,24 +38,13 @@ int main(int argc,const char *args[]){
     old_pos = malloc(sizeof(int)*SO_NUM_P);
     srand(time(NULL));
     for(i=0;i<SO_NUM_P;i++){
-<<<<<<< HEAD
         rand_pos = casuale(SO_BASE*SO_ALTEZZA, 0);
         old_pos[i]=rand_pos;
         if(val_check(rand_pos, old_pos) == 1)
         	rand_pos = casuale(SO_BASE*SO_ALTEZZA,0);
-=======
-        rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
-        printf("rand_pos - %d\n", rand_pos);
-        old_pos[i]=rand_pos;
-        if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(SO_BASE * SO_ALTEZZA,0);
->>>>>>> fa4ee6a646b078184a77820675828ff6611f2e5f
         matrice[rand_pos] = giocatore.giocatore;
 
     }
-<<<<<<< HEAD
     /*sem_release(sem_id_zero,0);*/
-=======
-    sem_reserve(sem_id_zero,0);
->>>>>>> fa4ee6a646b078184a77820675828ff6611f2e5f
     while (wait(NULL) != -1);
 }

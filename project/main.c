@@ -84,11 +84,7 @@ int main(){
     	tmp--;
         
     }
-
-<<<<<<< HEAD
-=======
     
->>>>>>> fa4ee6a646b078184a77820675828ff6611f2e5f
     stampa_scacchiera();
     /*shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
