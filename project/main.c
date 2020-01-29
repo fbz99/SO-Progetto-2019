@@ -11,7 +11,9 @@ int main(){
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int band, j=0, rand_pos, pos;
     int tmp = flag;
+    int status; 
     int *old_pos;
+    pid_t wpid;
     char * args [2]; 
     char *matrice;     
     char stringa[4];  
@@ -21,7 +23,6 @@ int main(){
    
        	for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
 		matrice[pos] = '0';
-
 		/*Creazione semafori sulla matrice*/
 		sem_id_mat= semget (key2, size, IPC_CREAT | 0666);
 		for(i=0;i<size;i++){
@@ -61,11 +62,11 @@ int main(){
     sem_set_val(sem_id_zero, 0 ,SO_NUM_G);
     sem_set_val(sem_id_zero,2,1);
     /*aspetta_zero(sem_id_zero,0);*/
-    
+    while ((wpid = wait(&status)) > 0); { 
     old_pos = malloc(sizeof(int)*flag);
 
     
-    srand(time(NULL));
+    
     for(i=0;i<flag;i++){
         
         rand_pos = casuale(size, 0);
@@ -88,6 +89,7 @@ int main(){
 
     
     stampa_scacchiera();
+    }
     /*shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
 }

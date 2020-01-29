@@ -97,3 +97,11 @@ int aspetta_zero(int sem_id, int sem_num);
 int casuale(int a,int b);
 
 int val_check(int val, int *pos);
+ 
+int initSemAvaiable(int semId, int semNum);
+
+int initSemInUse(int semId, int semNum);
+
+int reserveSem(int semId, int semNum);
+
+int releaseSem(int semId, int semNum);

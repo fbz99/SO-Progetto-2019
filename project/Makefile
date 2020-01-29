@@ -7,11 +7,11 @@ CFLAGS = -std=c89 -pedantic -g
 
 # con "make clean" solitamente si vogliono eliminare i prodotti della
 # compilazione e ripristinare il contenuto originale
-all: Libreria main bandierina player pedina 
+all: Libreria main player pedina 
 
 
 clean:
-	rm -f *.o main bandierina player pedina *~
+	rm -f *.o main player pedina *~
 
 Libreria:
 	gcc -c Libreria.c 
@@ -23,9 +23,6 @@ player: player.c Makefile
 	gcc $(CFLAGS) player.c Libreria.o -o player
 
 
-bandierina: bandierina.c Makefile
-	gcc $(CFLAGS) bandierina.c Libreria.o -o bandierina
-	
 pedina: pedina.c Makefile
 	gcc $(CFLAGS) pedina.c Libreria.o -o pedina
 
