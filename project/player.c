@@ -31,22 +31,20 @@ int main(int argc,const char *args[]){
             printf("PID GIOCATORE: %d",giocatore.giocatore);
             execve("./pedina", NULL, NULL);
             exit(1);
-
-            default:
-            printf("%d, %d\n", ptr[i],getpid());
-            break;
        } 
        
     }
     /*Inserimento pedine in posizione casuale*/
     old_pos = malloc(sizeof(int)*SO_NUM_P);
+    srand(time(NULL));
     for(i=0;i<SO_NUM_P;i++){
-        rand_pos = casuale(SO_NUM_G*SO_NUM_P, 0);
+        rand_pos = casuale(SO_BASE*SO_ALTEZZA, 0);
         old_pos[i]=rand_pos;
-        if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(SO_NUM_P*SO_NUM_G,0);
+        if(val_check(rand_pos, old_pos) == 1)
+        	rand_pos = casuale(SO_BASE*SO_ALTEZZA,0);
         matrice[rand_pos] = giocatore.giocatore;
+
     }
-    sem_reserve(sem_id_zero,0);
-   stampa_scacchiera();
+    /*sem_release(sem_id_zero,0);*/
     while (wait(NULL) != -1);
 }

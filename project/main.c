@@ -35,7 +35,6 @@ int main(){
 		}
 
 		sem_id_zero = semget(key0,4, IPC_CREAT | 0666);
-    
     args[1]=NULL;
     ptr = malloc(sizeof(int)*SO_NUM_G);
     /*Creazione Giocatori*/
@@ -86,7 +85,7 @@ int main(){
         
     }
 
-    
+    stampa_scacchiera();
     /*shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
 }
