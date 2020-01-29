@@ -59,8 +59,8 @@ int main(){
     }
     sem_set_val(sem_id_zero, 0 ,SO_NUM_G);
     sem_set_val(sem_id_zero,2,1);
-    /*aspetta_zero(sem_id_zero,0);
-    */
+    /*aspetta_zero(sem_id_zero,0);*/
+    
     old_pos = malloc(sizeof(int)*flag);
 
     
@@ -79,12 +79,16 @@ int main(){
         tot = tot - band;
         
         if(band!=0)
-        matrice[rand_pos] = band;
+        matrice[rand_pos] = band+48;
         
     	tmp--;
         
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fa4ee6a646b078184a77820675828ff6611f2e5f
     stampa_scacchiera();
     /*shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
