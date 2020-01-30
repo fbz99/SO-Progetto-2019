@@ -8,6 +8,7 @@
 #include <sys/sem.h>
 #include <errno.h>
 #include <string.h>
+#include <semaphore.h>
 
 #define SO_NUM_G 2
 #define SO_NUM_P 10
@@ -19,6 +20,10 @@
 #define SO_ROUND_SCORE 10
 #define SO_N_MOVES 20
 #define SO_MIN_HOLD_NSEC 10000000
+#define key 12345
+#define key2 22345
+#define key3 33245
+#define key0 44245
 
 void stampa_scacchiera();
 void red();
@@ -35,7 +40,8 @@ struct stato_player{
 struct stato_pedina{
 	int pid;
 	char padre;
-	int mosse;	
+	int mosse;
+	int pos;	
 };
 
 
@@ -105,3 +111,5 @@ int initSemInUse(int semId, int semNum);
 int reserveSem(int semId, int semNum);
 
 int releaseSem(int semId, int semNum);
+
+int pos_check(int pos,char * matrix);

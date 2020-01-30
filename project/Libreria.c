@@ -2,8 +2,7 @@
 
 void stampa_scacchiera(){
 	int i,j;
-    char *matrice;                                          
-    key_t key = 12345;
+    char *matrice;
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
 
@@ -32,7 +31,7 @@ void stampa_scacchiera(){
 				blue();
 			}
 
-			printf(" %c",matrice[i]);
+			printf("%c ",matrice[i]);
 		yellow();
             }
 		}
@@ -179,3 +178,10 @@ int releaseSem(int semId, int semNum){
 	
 	return semop(semId, &sops, 1);
 	}
+
+int pos_check(int pos, char * matrix){
+	if (matrix[pos]== '0'){
+		return 1;
+	}
+	else return 0;
+}
