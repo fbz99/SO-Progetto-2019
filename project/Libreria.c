@@ -22,7 +22,7 @@ void stampa_scacchiera(){
 	   	if(i%SO_BASE != 0){
 		   	if(matrice[i] == '0')printf("|   ");
 			else {
-               				printf("|");
+               				printf("| ");
 			if(matrice[i] >= '0' && matrice[i]<='9'){
 			reset();
 			
@@ -32,7 +32,7 @@ void stampa_scacchiera(){
 				blue();
 			}
 
-			printf(" %c ",matrice[i]);
+			printf(" %c",matrice[i]);
 		yellow();
             }
 		}

@@ -50,9 +50,9 @@ int main(){
            case 0: /*Processo figlio*/
             sprintf(stringa, "%d", i+1);
             args[0]= stringa;
-            /*printf("PID Giocatore : %d\n", getpid());
-            */execve("./player", args, NULL);
-            
+            /*printf("PID Giocatore : %d\n", getpid());*/
+			execve("./player", args, NULL);
+            break; /*Aggiunto*/
 
             /*default: printf("default fork\n");
             break;*/

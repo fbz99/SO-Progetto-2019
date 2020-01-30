@@ -43,6 +43,7 @@ int main(int argc,const char *args[]){
     old_pos = malloc(sizeof(int)*SO_NUM_P);
         for (pos = 0; pos <= SO_NUM_P; pos++) /*SETTAGGIO old pos*/
 		old_pos[pos] = 0;
+	srand(time(NULL));	/*Aggiunto*/
     for(i=0;i<SO_NUM_P;i++){
         rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
         printf("rand_pos - %d\n", rand_pos);
@@ -50,5 +51,6 @@ int main(int argc,const char *args[]){
         if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(SO_BASE * SO_ALTEZZA,0);
         matrice[rand_pos] = giocatore.giocatore;
     }
+    stampa_scacchiera();
     while (wait(NULL) != -1);
 }
