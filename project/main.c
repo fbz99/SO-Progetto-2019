@@ -16,15 +16,15 @@ int main(){
     char * args [2]; 
     char *matrice;     
     char stringa[4];  
-    int sem_id_mat, sem_id_mutex, sem_id_zero;    
+    int sem_id_mat, sem_id_mutex, sem_id_zero;  
 
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT |0666);
     matrice = shmat(mat_id, NULL, 0);
-   	printf("%d", mat_id);
+   	/*printf("%d", mat_id);*/
 
        	for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
 		matrice[pos] = '0';
-		
+
 		/*Creazione semafori sulla matrice*/
 		sem_id_mat= semget (key2, size, IPC_CREAT | 0666);
 		for(i=0;i<size;i++){
@@ -38,6 +38,7 @@ int main(){
 		/*sem_id_zero = semget(key0,4, IPC_CREAT | 0666);*/
     args[1]=NULL;
     ptr = malloc(sizeof(int)*SO_NUM_G);
+    
     /*Creazione Giocatori*/
     for(i=0 ;i<SO_NUM_G;i++){ 
        switch(ptr[i] = fork()){
@@ -48,12 +49,13 @@ int main(){
             case 0: /*Processo figlio*/
                 sprintf(stringa, "%d", i+1);
                 args[0]= stringa;
-                execve("./player", args, NULL);
+                execve("./player", args, args[1]);
                 printf("PID Giocatore : %d\n", getpid());
-            break; /*Aggiunto*/
+                break;
 
-            /*default: printf("default fork\n");
-            break;*/
+            /*default: 
+                printf("default fork\n");
+                break;*/
        } 
        
     }
@@ -84,7 +86,6 @@ int main(){
         
     }
     stampa_scacchiera();
-    printf("Panino");
     /*shmctl(mat_id, IPC_RMID, NULL);  /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
 }
