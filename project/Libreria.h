@@ -10,7 +10,7 @@
 #include <string.h>
 #include <semaphore.h>
 
-#define SO_NUM_G 2
+#define SO_NUM_G 1
 #define SO_NUM_P 10
 #define SO_MAX_TIME 3
 #define SO_BASE 60
@@ -24,6 +24,9 @@
 #define key2 22345
 #define key3 33245
 #define key0 44245
+#define MSG_LEN 10
+#define key1 55245
+#define MSGTYPE_RM 7
 
 void stampa_scacchiera();
 void red();
@@ -33,7 +36,7 @@ void magenta();
 void reset();
 
 struct stato_player{
-	int pid;
+	pid_t pid;
 	char giocatore;
 };
 
@@ -44,6 +47,10 @@ struct stato_pedina{
 	int pos;	
 };
 
+struct msgbuf {
+	int mtype;             /* message type, must be > 0 */
+	char mtext[MSG_LEN];    /* message data */
+};
 
 union semun {
 	int              val;    /* Value for SETVAL */
@@ -113,3 +120,7 @@ int reserveSem(int semId, int semNum);
 int releaseSem(int semId, int semNum);
 
 int pos_check(int pos,char * matrix);
+
+void copiaArray(char a[],char b[]);
+
+char* itoa(int i, char b[]);

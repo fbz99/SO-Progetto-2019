@@ -16,11 +16,12 @@ int main(){
     char * args [2]; 
     char *matrice;     
     char stringa[4];  
-    int sem_id_mat, sem_id_mutex, sem_id_zero;     
+    int sem_id_mat, sem_id_mutex, sem_id_zero;    
 
     int mat_id = shmget (key, sizeof(int)*(SO_BASE*SO_ALTEZZA), IPC_CREAT |0666);
     matrice = shmat(mat_id, NULL, 0);
-   
+   	printf("%d", mat_id);
+
        	for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
 		matrice[pos] = '0';
 		
@@ -34,22 +35,21 @@ int main(){
 		sem_id_mutex = semget (key3, 1, IPC_CREAT | 0666);
 		initSemAvaiable(sem_id_mutex,0);
 
-		sem_id_zero = semget(key0,4, IPC_CREAT | 0666);
+		/*sem_id_zero = semget(key0,4, IPC_CREAT | 0666);*/
     args[1]=NULL;
     ptr = malloc(sizeof(int)*SO_NUM_G);
     /*Creazione Giocatori*/
     for(i=0 ;i<SO_NUM_G;i++){ 
        switch(ptr[i] = fork()){
-           case -1: 
-           printf("Error\n");
-           exit(0);
-           
-
-           case 0: /*Processo figlio*/
-            sprintf(stringa, "%d", i+1);
-            args[0]= stringa;
-            /*printf("PID Giocatore : %d\n", getpid());*/
-			execve("./player", args, NULL);
+            case -1: 
+                printf("Error\n");
+                exit(0);
+                break;
+            case 0: /*Processo figlio*/
+                sprintf(stringa, "%d", i+1);
+                args[0]= stringa;
+                execve("./player", args, NULL);
+                printf("PID Giocatore : %d\n", getpid());
             break; /*Aggiunto*/
 
             /*default: printf("default fork\n");
@@ -58,10 +58,10 @@ int main(){
        
     }
     /*aspetta_zero(sem_id_zero,0);*/
-    while ((wpid = wait(&status)) > 0); { 
-    old_pos = malloc(sizeof(int)*flag);
+    /*while ((wpid = wait(&status)) > 0){ */
 
     
+    old_pos = malloc(sizeof(int)*flag);
     srand(time(NULL));
     for(i=0;i<flag;i++){
         
@@ -83,10 +83,9 @@ int main(){
     	tmp--;
         
     }
-
     stampa_scacchiera();
-    }
-    shmctl(mat_id, IPC_RMID, NULL); /*RIMOZIONE MEMORIA CONDIVISA*/
+    printf("Panino");
+    /*shmctl(mat_id, IPC_RMID, NULL);  /*RIMOZIONE MEMORIA CONDIVISA*/
     while (wait(NULL) != -1);
 }
 

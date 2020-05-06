@@ -9,6 +9,8 @@ void stampa_scacchiera(){
 		
 	
 	yellow();
+
+	/*Stampa scacchiera*/
 	/*PRIMA RIGA*/
 	for(i=0; i<SO_BASE;i++){
 		if(i==SO_BASE-1)printf("+\n");
@@ -184,4 +186,30 @@ int pos_check(int pos, char * matrix){
 		return 1;
 	}
 	else return 0;
+}
+char* itoa(int i, char b[]){
+    char const digit[] = "0123456789";
+    char* p = b;
+    if(i<0){
+        *p++ = '-';
+        i *= -1;
+    }
+    int shifter = i;
+    do{ //Move to where representation ends
+        ++p;
+        shifter = shifter/10;
+    }while(shifter);
+    *p = '\0';
+    do{ //Move back, inserting digits as u go
+        *--p = digit[i%10];
+        i = i/10;
+    }while(i);
+    return b;
+}
+
+void copiaArray(char a[],char b[]){
+	int i;
+	for(i=0;i<MSG_LEN;i++){
+		a[i]=b[i];
+	}
 }
