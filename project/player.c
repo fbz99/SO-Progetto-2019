@@ -34,16 +34,16 @@ int main(int argc,const char *args[]){
 		old_pos[pos] = 0;
 	
     srand(getpid());	/*Aggiunto*/
+
     for(i=0;i<SO_NUM_P;i++){
-        rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
+       /* rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);*/
+        while(semctl(sem_id_mat,rand_pos,GETVAL)!=1){
+            rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
+        }
         printf("Giocatore: %c\n",giocatore.giocatore);
         old_pos[i]=rand_pos;
-        if(val_check(rand_pos, old_pos) == 1)rand_pos = casuale(SO_BASE * SO_ALTEZZA,0);
+        
         matrice[rand_pos] = giocatore.giocatore;
-    }
-
-    args1[1] = NULL;
-    for(i=0 ;i<SO_NUM_P;i++){ 
         switch(ptr[i] = fork()){
         case -1:
             printf("error\n");
@@ -51,15 +51,14 @@ int main(int argc,const char *args[]){
             break;
 
         case 0: /*Processo figlio*/
-            itoa(old_pos[i],stringa);
+            /*itoa(old_pos[i],stringa);
           	copiaArray(my_msg.mtext,stringa);
             msgsnd(msg_id, &my_msg, MSG_LEN, 0);  /*Invio del messaggio nella coda*/
             execve("./pedina", args1, NULL);
             exit(1);
             break;
-        } 
+        }
     }
-
     releaseSem(sem_id_mutex,0);
     while (wait(NULL) != -1);
 }
