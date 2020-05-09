@@ -22,8 +22,8 @@ int main()
     matrice = shmat(mat_id, NULL, 0);
     /*printf("%d", mat_id);*/
 
-    for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
-        matrice[pos] = '0';
+    /*for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
+        /*matrice[pos] = '0';*/
 
     /*Creazione semafori sulla matrice*/
     sem_id_mat = semget(key2, size, IPC_CREAT | 0666);
@@ -53,7 +53,8 @@ int main()
             sprintf(stringa, "%d", i + 1);
             args[0] = stringa;
             execve("./player", args, NULL);
-            printf("PID Giocatore : %d\n", getpid());
+            printf("PID Giocatore : %d\n", getpid());   /*Questa stampa non la fa probabilmente perchè il figlio muore dopo
+                                                          l'execve, è giusto che faccia così?*/
             break;
 
             /*default: 
@@ -91,5 +92,6 @@ int main()
         tmp--;
     }
     stampa_scacchiera();
+    shmctl(mat_id,IPC_RMID,NULL); /*Rimozione memoria condivisa*/
     while (wait(NULL) != -1);
 }

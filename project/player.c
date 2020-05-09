@@ -71,6 +71,5 @@ int main(int argc, const char *args[])
     }
     matrice[0] = 65;
     releaseSem(sem_id_mutex, 0);
-    while (wait(NULL) != -1)
-        ;
+    while (wait(NULL) != -1);
 }

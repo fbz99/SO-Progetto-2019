@@ -25,7 +25,7 @@ void stampa_scacchiera()
 
 		if (i % SO_BASE != 0)
 		{
-			if (matrice[i] == '0')
+			if (matrice[i] == NULL)
 				printf("|   ");
 			else
 			{
