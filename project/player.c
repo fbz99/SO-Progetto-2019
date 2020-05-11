@@ -34,7 +34,7 @@ int main(int argc, const char *args[])
     for (pos = 0; pos < SO_NUM_P; pos++) /*SETTAGGIO old pos*/
         old_pos[pos] = 0;
 
-    srand(getpid()); /*Aggiunto*/
+    srand(getpid());
 
     args1[1] = NULL;
     for (i = 0; i < SO_NUM_P; i++)
