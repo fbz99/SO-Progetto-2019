@@ -1,47 +1,75 @@
+#include "Libreria.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/shm.h>
+int main(int argc, const char *args[])
+{
+    /*printf("PID1: %d\n", getpid());*/
+    struct stato_player giocatore;
+    struct msgbuf my_msg;
+    int i, rand_pos, j = 0;
+    int *ptr, pos;
+    int *old_pos;
+    char *args1[2];
+    char *matrice;
+    char stringa[10];
+    int msg_id;
+    int sem_id_mat, sem_id_mutex, sem_id_zero;
 
-#define SO_NUM_G 2
-#define SO_NUM_P 10
-#define SO_MAX_TIME 3
-#define SO_BASE 60
-#define SO_ALTEZZA 20
-#define SO_FLAG_MIN 5
-#define SO_FLAG_MAX 5
-#define SO_ROUND_SCORE 10
-#define SO_N_MOVES 20
-#define SO_MIN_HOLD_NSEC 10000000
+    /*char *my_messaggio;
+    printf(" sizeof char %ld", sizeof(my_messaggio));*/
+    int mat_id = shmget(key, sizeof(int) * (SO_BASE * SO_ALTEZZA), IPC_CREAT | 0666);
+    matrice = shmat(mat_id, NULL, 0);
 
-int main(){
-    
-    int i;
-    pid_t pedine[SO_NUM_P];
-    int *ptr = pedine;
+    /*Definizione stato (Struct)*/
+    ptr = malloc(sizeof(int) * SO_NUM_P);
+    giocatore.pid = getpid();
+    giocatore.giocatore = (atoi(args[0])) + 64;
 
+    /*Creazione coda di messaggi*/
+    msg_id = msgget(key_coda, IPC_CREAT | 0666);
 
-    for(i=0 ;i<SO_NUM_P;i++,ptr++){ 
-       switch(*ptr = fork()){
-           case -1: {
-           printf("error\n");
-           exit(0);
-           }
+    sem_id_mutex = semget(key3, 1, IPC_CREAT | 0666);
+    reserveSem(sem_id_mutex, 0);
 
-           case 0: /*Processo figlio*/
-            /*execve("./pedine", NULL, NULL);*/
-            printf("I=%d, SO_NUM_G: %d, processo n: %d, padre: %d\n",i,SO_NUM_G,getpid(),getppid()); 
-            exit(1);
+    /*Inserimento pedine in posizione casuale*/
+    for (pos = 0; pos < SO_NUM_P; pos++) /*SETTAGGIO old pos*/
+        old_pos[pos] = 0;
 
-            default:
-            /*printf("PLAYER ");*/
+    srand(getpid());
+
+    args1[1] = NULL;
+    for (i = 0; i < SO_NUM_P; i++)
+    {
+        rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
+        while (semctl(sem_id_mat, rand_pos, GETVAL) != 1)
+        {
+            /*printf("%d\n",semctl(sem_id_mat,rand_pos,GETVAL));*/
+            rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
+        }
+        old_pos[i] = rand_pos;
+
+        sprintf(stringa, "%d", rand_pos);
+        args1[0] = stringa;
+        matrice[rand_pos] = giocatore.giocatore;
+
+        printf("Giocatore: %c\n", giocatore.giocatore);
+
+        switch (ptr[i] = fork())
+        {
+        case -1:
+            printf("error\n");
+            exit(0);
             break;
-       } 
-       
-    }
 
+        case 0: /*Processo figlio*/
+            /*itoa(old_pos[i],stringa);
+          	copiaArray(my_msg.mtext,stringa);
+            msgsnd(msg_id, &my_msg, MSG_LEN, 0);  /*Invio del messaggio nella coda*/
+            execve("./pedina", args1, NULL);
+            exit(1);
+            break;
+        }
+    }
+    matrice[0] = 65;
+    releaseSem(sem_id_mutex, 0);
     while (wait(NULL) != -1);
 }
