@@ -1,0 +1,244 @@
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 12:00 ?        00:00:02 /sbin/init splash
+root         2     0  0 12:00 ?        00:00:00 [kthreadd]
+root         3     2  0 12:00 ?        00:00:00 [rcu_gp]
+root         4     2  0 12:00 ?        00:00:00 [rcu_par_gp]
+root         6     2  0 12:00 ?        00:00:00 [kworker/0:0H-kb]
+root         9     2  0 12:00 ?        00:00:00 [mm_percpu_wq]
+root        10     2  0 12:00 ?        00:00:00 [ksoftirqd/0]
+root        11     2  0 12:00 ?        00:00:12 [rcu_sched]
+root        12     2  0 12:00 ?        00:00:00 [migration/0]
+root        13     2  0 12:00 ?        00:00:00 [idle_inject/0]
+root        14     2  0 12:00 ?        00:00:00 [cpuhp/0]
+root        15     2  0 12:00 ?        00:00:00 [cpuhp/1]
+root        16     2  0 12:00 ?        00:00:00 [idle_inject/1]
+root        17     2  0 12:00 ?        00:00:00 [migration/1]
+root        18     2  0 12:00 ?        00:00:01 [ksoftirqd/1]
+root        20     2  0 12:00 ?        00:00:00 [kworker/1:0H-kb]
+root        21     2  0 12:00 ?        00:00:00 [cpuhp/2]
+root        22     2  0 12:00 ?        00:00:00 [idle_inject/2]
+root        23     2  0 12:00 ?        00:00:00 [migration/2]
+root        24     2  0 12:00 ?        00:00:00 [ksoftirqd/2]
+root        26     2  0 12:00 ?        00:00:00 [kworker/2:0H-kb]
+root        27     2  0 12:00 ?        00:00:00 [cpuhp/3]
+root        28     2  0 12:00 ?        00:00:00 [idle_inject/3]
+root        29     2  0 12:00 ?        00:00:00 [migration/3]
+root        30     2  0 12:00 ?        00:00:00 [ksoftirqd/3]
+root        32     2  0 12:00 ?        00:00:00 [kworker/3:0H-kb]
+root        33     2  0 12:00 ?        00:00:00 [kdevtmpfs]
+root        34     2  0 12:00 ?        00:00:00 [netns]
+root        35     2  0 12:00 ?        00:00:00 [rcu_tasks_kthre]
+root        36     2  0 12:00 ?        00:00:00 [kauditd]
+root        39     2  0 12:00 ?        00:00:00 [khungtaskd]
+root        40     2  0 12:00 ?        00:00:00 [oom_reaper]
+root        41     2  0 12:00 ?        00:00:00 [writeback]
+root        42     2  0 12:00 ?        00:00:00 [kcompactd0]
+root        43     2  0 12:00 ?        00:00:00 [ksmd]
+root        44     2  0 12:00 ?        00:00:00 [khugepaged]
+root       137     2  0 12:00 ?        00:00:00 [kintegrityd]
+root       138     2  0 12:00 ?        00:00:00 [kblockd]
+root       139     2  0 12:00 ?        00:00:00 [blkcg_punt_bio]
+root       140     2  0 12:00 ?        00:00:00 [tpm_dev_wq]
+root       141     2  0 12:00 ?        00:00:00 [ata_sff]
+root       142     2  0 12:00 ?        00:00:00 [md]
+root       143     2  0 12:00 ?        00:00:00 [edac-poller]
+root       144     2  0 12:00 ?        00:00:00 [devfreq_wq]
+root       145     2  0 12:00 ?        00:00:00 [watchdogd]
+root       146     2  0 12:00 ?        00:00:00 [irq/24-AMD-Vi]
+root       149     2  0 12:00 ?        00:00:00 [kswapd0]
+root       150     2  0 12:00 ?        00:00:00 [kworker/u9:0-hc]
+root       151     2  0 12:00 ?        00:00:00 [ecryptfs-kthrea]
+root       154     2  0 12:00 ?        00:00:00 [kthrotld]
+root       155     2  0 12:00 ?        00:00:00 [acpi_thermal_pm]
+root       157     2  0 12:00 ?        00:00:00 [ipv6_addrconf]
+root       169     2  0 12:00 ?        00:00:00 [kstrp]
+root       188     2  0 12:00 ?        00:00:00 [charger_manager]
+root       249     2  0 12:00 ?        00:00:00 [scsi_eh_0]
+root       250     2  0 12:00 ?        00:00:00 [scsi_tmf_0]
+root       251     2  0 12:00 ?        00:00:00 [scsi_eh_1]
+root       252     2  0 12:00 ?        00:00:00 [scsi_tmf_1]
+root       255     2  0 12:00 ?        00:00:00 [amd_iommu_v2]
+root       256     2  0 12:00 ?        00:00:00 [ttm_swap]
+root       257     2  0 12:00 ?        00:00:29 [gfx]
+root       258     2  0 12:00 ?        00:00:00 [comp_1.0.0]
+root       259     2  0 12:00 ?        00:00:00 [comp_1.1.0]
+root       260     2  0 12:00 ?        00:00:00 [comp_1.2.0]
+root       261     2  0 12:00 ?        00:00:00 [comp_1.3.0]
+root       262     2  0 12:00 ?        00:00:00 [comp_1.0.1]
+root       263     2  0 12:00 ?        00:00:00 [comp_1.1.1]
+root       264     2  0 12:00 ?        00:00:00 [comp_1.2.1]
+root       265     2  0 12:00 ?        00:00:00 [comp_1.3.1]
+root       266     2  0 12:00 ?        00:00:03 [sdma0]
+root       267     2  0 12:00 ?        00:00:00 [sdma1]
+root       268     2  0 12:00 ?        00:00:00 [uvd]
+root       269     2  0 12:00 ?        00:00:00 [vce0]
+root       270     2  0 12:00 ?        00:00:00 [vce1]
+root       272     2  0 12:00 ?        00:00:00 [kworker/0:1H-kb]
+root       273     2  0 12:00 ?        00:00:00 [kworker/1:1H-kb]
+root       276     2  0 12:00 ?        00:00:00 [gfx]
+root       277     2  0 12:00 ?        00:00:00 [comp_1.0.0]
+root       278     2  0 12:00 ?        00:00:00 [comp_1.0.1]
+root       279     2  0 12:00 ?        00:00:00 [comp_1.0.2]
+root       280     2  0 12:00 ?        00:00:00 [comp_1.0.3]
+root       281     2  0 12:00 ?        00:00:00 [comp_1.0.4]
+root       282     2  0 12:00 ?        00:00:00 [comp_1.0.5]
+root       283     2  0 12:00 ?        00:00:00 [comp_1.0.6]
+root       284     2  0 12:00 ?        00:00:00 [comp_1.0.7]
+root       285     2  0 12:00 ?        00:00:00 [sdma0]
+root       286     2  0 12:00 ?        00:00:00 [sdma1]
+root       410     2  0 12:00 ?        00:00:02 [jbd2/sdb5-8]
+root       411     2  0 12:00 ?        00:00:00 [ext4-rsv-conver]
+root       413     2  0 12:00 ?        00:00:00 [kworker/2:1H-kb]
+root       439     2  0 12:00 ?        00:00:00 [kworker/3:1H-kb]
+root       459     1  0 12:00 ?        00:00:06 /lib/systemd/systemd-journald
+root       484     1  0 12:00 ?        00:00:00 /sbin/lvmetad -f
+root       486     1  0 12:00 ?        00:00:00 /lib/systemd/systemd-udevd
+root       511     2  0 12:00 ?        00:00:00 [loop0]
+root       512     2  0 12:00 ?        00:00:00 [loop1]
+root       513     2  0 12:00 ?        00:00:00 [loop2]
+root       551     2  0 12:00 ?        00:00:52 [irq/35-ELAN060B]
+root       557     2  0 15:36 ?        00:00:00 [kworker/3:1-eve]
+root       559     2  0 12:00 ?        00:00:00 [cfg80211]
+roberto    578 10658  0 15:36 ?        00:00:07 /usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 10342 -prefMapSize 221065 -parentBuildID 20200429185419 -appdir /usr/lib/firefox/browser 10658 true tab
+root       580     2  0 12:00 ?        00:00:00 [ath10k_wq]
+root       581     2  0 12:00 ?        00:00:00 [ath10k_aux_wq]
+root       599     2  0 12:00 ?        00:00:00 [cryptd]
+root       600     2  0 12:00 ?        00:00:00 [kworker/u9:1-hc]
+roberto    702  1804  0 15:38 ?        00:00:00 bwrap --args 33 telegram-desktop --
+roberto    710  1507  0 15:38 ?        00:00:00 /usr/lib/flatpak/flatpak-session-helper
+roberto    715  1507  0 15:38 ?        00:00:00 /usr/libexec/xdg-document-portal
+roberto    718  1507  0 15:38 ?        00:00:00 /usr/libexec/xdg-permission-store
+root       721     2  0 15:38 ?        00:00:03 [kworker/3:3-eve]
+roberto    730     1  0 15:38 ?        00:00:00 bwrap --args 34 /usr/lib/flatpak/flatpak-dbus-proxy --args=36
+roberto    731   730  0 15:38 ?        00:00:00 /usr/lib/flatpak/flatpak-dbus-proxy --args=36
+roberto    733   702  0 15:38 ?        00:00:00 bwrap --args 33 telegram-desktop --
+roberto    734   733  1 15:38 ?        00:00:38 telegram-desktop.bin --
+root       772     2  0 15:38 ?        00:00:04 [kworker/2:0-eve]
+roberto    793 10216  0 15:39 ?        00:00:00 /usr/share/code/code /usr/share/code/resources/app/out/bootstrap-fork --type=searchService
+roberto    827 10417  0 15:39 pts/2    00:00:00 /usr/bin/zsh
+root       849     2  0 12:00 ?        00:00:13 [kworker/0:3-eve]
+systemd+   872     1  0 12:00 ?        00:00:00 /lib/systemd/systemd-timesyncd
+systemd+   875     1  0 12:00 ?        00:00:01 /lib/systemd/systemd-resolved
+root       953     1  0 12:00 ?        00:00:00 /usr/sbin/irqbalance --foreground
+root       956     1  0 12:00 ?        00:00:01 /usr/sbin/acpid
+root       963     1  0 12:00 ?        00:00:02 /usr/lib/udisks2/udisksd
+root       965     1  0 12:00 ?        00:00:00 /usr/sbin/cupsd -l
+root       971     1  0 12:00 ?        00:00:00 /usr/lib/bluetooth/bluetoothd
+root       972     1  0 12:00 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+root       977     1  0 12:00 ?        00:00:00 /lib/systemd/systemd-logind
+root       982     1  0 12:00 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+message+   987     1  0 12:00 ?        00:00:01 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root       997     1  0 12:00 ?        00:00:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+avahi     1001     1  0 12:00 ?        00:00:00 avahi-daemon: running [mi--nt.local]
+root      1002     1  0 12:00 ?        00:00:03 /usr/sbin/NetworkManager --no-daemon
+avahi     1007  1001  0 12:00 ?        00:00:00 avahi-daemon: chroot helper
+root      1008     1  0 12:00 ?        00:00:00 /usr/sbin/ModemManager --filter-policy=strict
+syslog    1009     1  0 12:00 ?        00:00:02 /usr/sbin/rsyslogd -n
+root      1012     1  0 12:00 ?        00:00:00 /usr/sbin/cron -f
+root      1015     1  0 12:00 ?        00:00:02 /usr/lib/snapd/snapd
+kernoops  1017     1  0 12:00 ?        00:00:00 /usr/sbin/kerneloops --test
+kernoops  1026     1  0 12:00 ?        00:00:00 /usr/sbin/kerneloops
+root      1046     1  0 12:00 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+root      1056     1  0 12:00 ?        00:00:00 /usr/sbin/cups-browsed
+root      1133     1  0 12:00 ?        00:00:00 /usr/sbin/lightdm
+root      1145  1133  2 12:00 tty7     00:05:48 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root      1149     1  0 12:00 tty1     00:00:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root      1326     1  0 12:00 ?        00:00:02 /usr/lib/upower/upowerd
+root      1345  1133  0 12:00 ?        00:00:00 lightdm --session-child 12 19
+root      1366  1002  0 12:00 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dhclient-wlp1s0.pid -lf /var/lib/NetworkManager/dhclient-e48a2f76-6bc5-469e-b986-87e3731695ec-wlp1s0.lease -cf /var/lib/NetworkManager/dhclient-wlp1s0.conf wlp1s0
+roberto   1507     1  0 12:45 ?        00:00:00 /lib/systemd/systemd --user
+roberto   1508  1507  0 12:45 ?        00:00:00 (sd-pam)
+roberto   1525     1  0 12:45 ?        00:00:01 /usr/bin/gnome-keyring-daemon --daemonize --login
+roberto   1528  1345  0 12:45 ?        00:00:01 cinnamon-session --session cinnamon
+roberto   1544  1507  0 12:45 ?        00:00:02 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+roberto   1595  1528  0 12:45 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/im-launch cinnamon-session-cinnamon
+roberto   1607  1507  0 12:45 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+roberto   1612  1607  0 12:45 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+roberto   1614  1507  0 12:45 ?        00:00:01 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+roberto   1626  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-power
+roberto   1627  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-media-keys
+roberto   1629  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-xrandr
+roberto   1630  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-sound
+roberto   1631  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-wacom
+roberto   1632  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-housekeeping
+roberto   1633  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-orientation
+roberto   1636  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-a11y-keyboard
+roberto   1644  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-clipboard
+roberto   1653  1528  0 12:45 ?        00:00:01 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-keyboard
+roberto   1659  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-background
+roberto   1664  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-mouse
+roberto   1665  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-xsettings
+roberto   1670     1  0 12:45 ?        00:00:00 /usr/bin/pulseaudio --start --log-target=syslog
+rtkit     1671     1  0 12:45 ?        00:00:00 /usr/lib/rtkit/rtkit-daemon
+roberto   1672  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-a11y-settings
+roberto   1675  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-cursor
+roberto   1680  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-color
+roberto   1681  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-automount
+roberto   1687  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-screensaver-proxy
+roberto   1688  1528  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-print-notifications
+roberto   1695  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfsd
+roberto   1707  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+roberto   1725  1507  0 12:45 ?        00:00:00 /usr/lib/dconf/dconf-service
+roberto   1739  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+colord    1745     1  0 12:45 ?        00:00:00 /usr/lib/colord/colord
+root      1753     2  0 12:45 ?        00:00:00 [krfcommd]
+roberto   1757  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+roberto   1762  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+roberto   1766  1507  0 12:45 ?        00:00:00 /usr/lib/gnome-online-accounts/goa-daemon
+roberto   1788  1507  0 12:45 ?        00:00:01 /usr/lib/gnome-online-accounts/goa-identity-service
+roberto   1793  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+roberto   1798  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+roberto   1803  1528  0 12:45 ?        00:00:00 cinnamon-launcher
+roberto   1804  1803  3 12:45 ?        00:07:19 cinnamon --replace
+roberto   1807     1  0 12:45 ?        00:00:00 /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-printer
+roberto   1833  1528  0 12:45 ?        00:00:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+roberto   1834  1528  0 12:45 ?        00:00:00 blueberry-obex-agent
+roberto   1842  1528  0 12:45 ?        00:00:04 nemo-desktop
+roberto   1843  1528  0 12:45 ?        00:00:03 nm-applet
+roberto   1851  1528  0 12:45 ?        00:00:00 cinnamon-killer-daemon
+roberto   1879  1507  0 12:45 ?        00:00:00 /usr/lib/bluetooth/obexd
+roberto   1881  1695  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.25 /org/gtk/gvfs/exec_spaw/0
+root      1908     2  0 15:40 ?        00:00:01 [kworker/u8:2-ph]
+roberto   1937  1507  0 12:45 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+roberto   1947     1  0 12:45 ?        00:00:00 blueberry-tray
+roberto   1948  1528  0 12:45 ?        00:00:03 cinnamon-screensaver
+roberto   1960  1947  0 12:45 ?        00:00:00 python3 /usr/lib/blueberry/safechild /usr/sbin/rfkill event
+roberto   1962  1960  0 12:45 ?        00:00:00 /usr/sbin/rfkill event
+roberto   2224     1  0 12:45 ?        00:00:01 mintUpdate
+roberto   2287  1528  0 12:45 ?        00:00:01 /usr/bin/python3 /usr/share/system-config-printer/applet.py
+roberto   2307     1  0 12:46 ?        00:01:34 mintreport-tray
+roberto   4064 10658  0 15:50 ?        00:00:00 /usr/lib/firefox/firefox -contentproc -childID 5 -isForBrowser -prefsLen 10401 -prefMapSize 221065 -parentBuildID 20200429185419 -appdir /usr/lib/firefox/browser 10658 true tab
+root      5344     2  0 16:04 ?        00:00:00 [kworker/0:1-eve]
+roberto   5374 10417  0 16:05 pts/3    00:00:00 /usr/bin/zsh
+root      6049     1  0 12:55 ?        00:00:00 /usr/lib/packagekit/packagekitd
+roberto   6203   827  0 16:08 pts/2    00:00:00 gdb main
+roberto   6217  6203  0 16:08 pts/2    00:00:00 /home/roberto/Scrivania/SO-Progetto-2019/project/main
+roberto   6221  6217  0 16:08 pts/2    00:00:00 [player] <defunct>
+roberto   6222  6217  0 16:08 pts/2    00:00:00 [player] <defunct>
+root      6393     2  0 16:10 ?        00:00:00 [kworker/u8:0-ph]
+roberto   6491  5374  0 16:11 pts/3    00:00:00 ps -Af
+root     10151     2  0 14:03 ?        00:00:03 [kworker/1:0-eve]
+roberto  10158  1804  1 14:06 ?        00:01:33 /usr/share/code/code --no-sandbox --unity-launch
+roberto  10161 10158  0 14:06 ?        00:00:00 /usr/share/code/code --type=zygote --no-sandbox
+roberto  10185 10158  3 14:06 ?        00:04:35 /usr/share/code/code --type=gpu-process --field-trial-handle=7822085629965472582,6913904365732051335,131072 --disable-features=LayoutNG,PictureInPicture,SpareRendererForSitePerProcess --disable-color-correct-rendering --no-sandbox --gpu-preferences=KAAAAAAAAAAgAAAgAAAAAAAAYAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA --service-request-channel-token=12066986524045777580
+roberto  10207 10158  0 14:06 ?        00:00:00 /usr/share/code/code --type=utility --field-trial-handle=7822085629965472582,6913904365732051335,131072 --disable-features=LayoutNG,PictureInPicture,SpareRendererForSitePerProcess --lang=it --service-sandbox-type=network --no-sandbox --standard-schemes --secure-schemes=vscode-resource --bypasscsp-schemes --cors-schemes=vscode-resource --fetch-schemes=vscode-resource --service-worker-schemes --service-request-channel-token=2812408558300572318 --shared-files=v8_context_snapshot_data:100,v8_natives_data:101
+roberto  10216 10158  9 14:06 ?        00:12:33 /usr/share/code/code --type=renderer --disable-color-correct-rendering --no-sandbox --field-trial-handle=7822085629965472582,6913904365732051335,131072 --disable-features=LayoutNG,PictureInPicture,SpareRendererForSitePerProcess --lang=it --standard-schemes --secure-schemes=vscode-resource --bypasscsp-schemes --cors-schemes=vscode-resource --fetch-schemes=vscode-resource --service-worker-schemes --app-path=/usr/share/code/resources/app --node-integration --webview-tag --no-sandbox --no-zygote --background-color=#1e1e1e --num-raster-threads=2 --enable-main-frame-before-activation --service-request-channel-token=11123141875845851878 --renderer-client-id=5 --no-v8-untrusted-code-mitigations --shared-files=v8_context_snapshot_data:100,v8_natives_data:101
+roberto  10263 10216  1 14:06 ?        00:01:59 /usr/share/code/code --inspect-port=0 /usr/share/code/resources/app/out/bootstrap-fork --type=extensionHost
+roberto  10278 10216  0 14:06 ?        00:00:04 /usr/share/code/code /usr/share/code/resources/app/out/bootstrap-fork --type=watcherService
+roberto  10291 10158  0 14:06 ?        00:00:08 /usr/share/code/code --type=renderer --disable-color-correct-rendering --no-sandbox --field-trial-handle=7822085629965472582,6913904365732051335,131072 --disable-features=LayoutNG,PictureInPicture,SpareRendererForSitePerProcess --lang=it --standard-schemes --secure-schemes=vscode-resource --bypasscsp-schemes --cors-schemes=vscode-resource --fetch-schemes=vscode-resource --service-worker-schemes --app-path=/usr/share/code/resources/app --node-integration --no-sandbox --no-zygote --background-color=#1e1e1e --disable-blink-features=Auxclick --num-raster-threads=2 --enable-main-frame-before-activation --service-request-channel-token=4250508070862034243 --renderer-client-id=7 --no-v8-untrusted-code-mitigations --shared-files=v8_context_snapshot_data:100,v8_natives_data:101
+roberto  10358 10263  0 14:06 ?        00:00:02 /usr/share/code/code /usr/share/code/resources/app/extensions/json-language-features/server/dist/jsonServerMain --node-ipc --clientProcessId=10263
+roberto  10378 10263  0 14:06 ?        00:00:17 /home/roberto/.vscode/extensions/ms-vscode.cpptools-0.28.0/bin/cpptools
+roberto  10416     1  0 14:06 ?        00:00:00 /bin/sh -c "/home/roberto/.vscode/extensions/ms-vsliveshare.vsliveshare-1.0.2169/dotnet_modules/vsls-agent" --autoexit --enableRpcInitialize --pipe vscode.3d442afcc23949f2abe1e81301f6e275 --service https://prod.liveshare.vsengsaas.visualstudio.com/ --signalRServiceUri https://signlr-prod.core.vsengsaas.visualstudio.com/api/signalr/signalrhub --agentExtensionPath "/home/roberto/.vscode/extensions/ms-vsliveshare.vsliveshare-1.0.2169/dotnet_modules/Microsoft.VisualStudio.LiveShare.Agent.PresenceService.dll"
+roberto  10417 10416  0 14:06 ?        00:00:36 /home/roberto/.vscode/extensions/ms-vsliveshare.vsliveshare-1.0.2169/dotnet_modules/vsls-agent --autoexit --enableRpcInitialize --pipe vscode.3d442afcc23949f2abe1e81301f6e275 --service https://prod.liveshare.vsengsaas.visualstudio.com/ --signalRServiceUri https://signlr-prod.core.vsengsaas.visualstudio.com/api/signalr/signalrhub --agentExtensionPath /home/roberto/.vscode/extensions/ms-vsliveshare.vsliveshare-1.0.2169/dotnet_modules/Microsoft.VisualStudio.LiveShare.Agent.PresenceService.dll
+roberto  10561  1507  0 14:07 ?        00:00:19 /usr/lib/gnome-terminal/gnome-terminal-server
+roberto  10568 10561  0 14:07 pts/0    00:00:08 zsh
+roberto  10658  1804  1 14:07 ?        00:01:30 /usr/lib/firefox/firefox
+roberto  10717 10658  1 14:07 ?        00:01:16 /usr/lib/firefox/firefox -contentproc -childID 1 -isForBrowser -prefsLen 1 -prefMapSize 221065 -parentBuildID 20200429185419 -appdir /usr/lib/firefox/browser 10658 true tab
+roberto  10766 10658  0 14:07 ?        00:00:04 /usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 6247 -prefMapSize 221065 -parentBuildID 20200429185419 -appdir /usr/lib/firefox/browser 10658 true tab
+roberto  11393 10378  0 14:11 ?        00:00:04 /home/roberto/.vscode/extensions/ms-vscode.cpptools-0.28.0/bin/cpptools-srv 10378 3
+roberto  12933 10378  0 14:17 ?        00:00:03 /home/roberto/.vscode/extensions/ms-vscode.cpptools-0.28.0/bin/cpptools-srv 10378 5
+roberto  14596 10378  0 14:24 ?        00:00:01 /home/roberto/.vscode/extensions/ms-vscode.cpptools-0.28.0/bin/cpptools-srv 10378 6
+root     15419     2  0 14:34 ?        00:00:10 [kworker/1:2-eve]
+root     19117     2  0 14:47 ?        00:00:03 [kworker/u8:3-ev]
+roberto  29460 10378  0 15:18 ?        00:00:00 /home/roberto/.vscode/extensions/ms-vscode.cpptools-0.28.0/bin/cpptools-srv 10378 4
+root     29934     2  0 15:21 ?        00:00:01 [kworker/2:1-eve]

@@ -17,9 +17,10 @@ int main()
     char *matrice;
     char stringa[4];
     int sem_id_mat, sem_id_mutex, sem_id_zero;
-    int mat_id = shmget(key, sizeof(int) * (SO_BASE * SO_ALTEZZA), IPC_CREAT | 0666);
 
+    int mat_id = shmget(key, sizeof(int) * (SO_BASE * SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
+   
     /*printf("%d", mat_id);*/
 
     /*for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
@@ -62,6 +63,7 @@ int main()
                 break;*/
         }
     }
+
     /*aspetta_zero(sem_id_zero,0);*/
     /*while ((wpid = wait(&status)) > 0){ */
 
@@ -92,6 +94,8 @@ int main()
         tmp--;
     }
     stampa_scacchiera();
-    shmctl(mat_id,IPC_RMID,NULL); /*Rimozione memoria condivisa*/
+   /* stampaArray(matrice);*/
+    
     while (wait(NULL) != -1);
+    shmctl(mat_id,IPC_RMID,NULL); /*Rimozione memoria condivisa*/
 }

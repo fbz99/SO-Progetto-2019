@@ -39,7 +39,7 @@ int main(int argc, const char *args[])
     args1[1] = NULL;
     for (i = 0; i < SO_NUM_P; i++)
     {
-        rand_pos = casuale(SO_BASE * SO_ALTEZZA, 0);
+        rand_pos = casuale(SO_BASE * SO_ALTEZZA, 1);
         while (semctl(sem_id_mat, rand_pos, GETVAL) != 1)
         {
             /*printf("%d\n",semctl(sem_id_mat,rand_pos,GETVAL));*/
@@ -50,9 +50,9 @@ int main(int argc, const char *args[])
         sprintf(stringa, "%d", rand_pos);
         args1[0] = stringa;
         matrice[rand_pos] = giocatore.giocatore;
-
-        /*printf("Giocatore: %c\n", giocatore.giocatore);*/
-
+       /* printf("Rand_pos: %d - matrice[rand_pos]: %c\n", rand_pos,matrice[rand_pos]);*/
+       /* printf("Giocatore: %c\n", giocatore.giocatore);*/
+       
         switch (ptr[i] = fork())
         {
         case -1:
@@ -69,6 +69,8 @@ int main(int argc, const char *args[])
             break;
         }
     }
+     /*stampaArray();*/
+    
     releaseSem(sem_id_mutex, 0);
     while (wait(NULL) != -1);
 }

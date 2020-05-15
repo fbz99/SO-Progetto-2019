@@ -13,7 +13,7 @@ void stampa_scacchiera()
 	/*PRIMA RIGA*/
 	for (i = 1; i <= SO_BASE; i++)
 	{
-		if (i == SO_BASE)
+		if (i == SO_BASE )
 			printf("+\n");
 		else
 			printf("+---");
@@ -252,4 +252,45 @@ void copiaArray(char a[], char b[])
 	{
 		a[i] = b[i];
 	}
+}
+
+void stampaArray(char * matrice){
+	int i,j;
+
+	/*PRIMA RIGA*/
+	for (i = 1; i <= SO_BASE; i++)
+	{
+		if (i == SO_BASE )
+			printf("+\n");
+		else
+			printf("+---");
+	}
+
+	/*STRUTTURA CENTRALE*/
+	
+	for (i = 1; i <= SO_ALTEZZA * SO_BASE; i++)
+	{
+		if (i % SO_BASE != 0)
+		{
+			if (matrice[i] >= 32 && matrice[i] <= 126 ){
+				printf("| ");
+				printf("%c ", matrice[i]);
+				
+			}
+			else
+				printf("|   ");
+		}
+		else if (i % SO_BASE == 0)
+		{
+			printf("|\n");
+			for (j = 0; j < SO_BASE; j++)
+			{
+				if (j == SO_BASE - 1)
+					printf("+\n");
+				else
+					printf("+---");
+			}
+		}
+	}
+	printf("\n");
 }

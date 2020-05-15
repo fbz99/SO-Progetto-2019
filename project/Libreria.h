@@ -124,3 +124,5 @@ int pos_check(int pos,char * matrix);
 void copiaArray(char a[],char b[]);
 
 char* itoa(int i, char b[]);
+
+void stampaArray();
