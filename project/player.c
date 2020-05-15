@@ -6,6 +6,7 @@ int main(int argc, const char *args[])
     struct stato_player giocatore;
     struct msgbuf my_msg;
     int i, rand_pos, j = 0;
+    int val_sem = atoi(args[0])-1;
     int *ptr, pos;
     int *old_pos;
     char *args1[2];
@@ -72,7 +73,6 @@ int main(int argc, const char *args[])
         }
     }
      /*stampaArray();*/
-    
     releaseSem(sem_id_mutex, 0);
     releaseSem(sem_id_zero, 0);
     while (wait(NULL) != -1);

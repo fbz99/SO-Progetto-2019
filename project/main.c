@@ -54,9 +54,7 @@ int main()
         case 0: /*Processo figlio*/
             sprintf(stringa, "%d", i + 1);
             args[0] = stringa;
-            execve("./player", args, NULL);
-            printf("PID Giocatore : %d\n", getpid());   /*Questa stampa non la fa probabilmente perchè il figlio muore dopo
-                                                          l'execve, è giusto che faccia così?*/
+            execve("./player", args, NULL);  
             break;
 
             default: 
@@ -64,7 +62,7 @@ int main()
                 break;
         }
     }
-    /*aspetta_zero(sem_id_zero,0);*/
+    /*aspetta_zero(sem_id_zero,SO_NUM_G);*/
     /*while ((wpid = wait(&status)) > 0){ */
 
     old_pos = malloc(sizeof(int) * flag);
