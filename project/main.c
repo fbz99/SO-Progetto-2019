@@ -37,7 +37,8 @@ int main()
     sem_id_mutex = semget(key3, 1, IPC_CREAT | 0666);
     initSemAvaiable(sem_id_mutex, 0);
 
-    /*sem_id_zero = semget(key0,4, IPC_CREAT | 0666);*/
+    sem_id_zero = semget(key0,1, IPC_CREAT | 0666);
+
     args[1] = NULL;
     ptr = malloc(sizeof(int) * SO_NUM_G);
 
@@ -58,12 +59,11 @@ int main()
                                                           l'execve, è giusto che faccia così?*/
             break;
 
-            /*default: 
-                printf("default fork\n");
-                break;*/
+            default: 
+                reserveSem(sem_id_zero,0);
+                break;
         }
     }
-
     /*aspetta_zero(sem_id_zero,0);*/
     /*while ((wpid = wait(&status)) > 0){ */
 

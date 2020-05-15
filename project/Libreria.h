@@ -23,7 +23,7 @@
 #define key 12345
 #define key2 22345
 #define key3 33245
-#define key0 44245
+#define key0 44245 /*semidzero*/
 #define MSG_LEN 120
 #define key_coda 55245
 #define MSGTYPE_RM 7

@@ -19,6 +19,7 @@ int main(int argc, const char *args[])
     int mat_id = shmget(key, sizeof(int) * (SO_BASE * SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
 
+
     /*Definizione stato (Struct)*/
     ptr = malloc(sizeof(int) * SO_NUM_P);
     giocatore.pid = getpid();
@@ -28,6 +29,7 @@ int main(int argc, const char *args[])
     msg_id = msgget(key_coda, IPC_CREAT | 0666);
 
     sem_id_mutex = semget(key3, 1, IPC_CREAT | 0666);
+    sem_id_zero = semget(key0, 1, IPC_CREAT | 0666);
     reserveSem(sem_id_mutex, 0);
 
     /*Inserimento pedine in posizione casuale*/
@@ -72,5 +74,6 @@ int main(int argc, const char *args[])
      /*stampaArray();*/
     
     releaseSem(sem_id_mutex, 0);
+    releaseSem(sem_id_zero, 0);
     while (wait(NULL) != -1);
 }
