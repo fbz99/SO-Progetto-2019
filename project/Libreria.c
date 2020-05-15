@@ -11,9 +11,9 @@ void stampa_scacchiera()
 
 	/*Stampa scacchiera*/
 	/*PRIMA RIGA*/
-	for (i = 0; i < SO_BASE; i++)
+	for (i = 1; i <= SO_BASE; i++)
 	{
-		if (i == SO_BASE - 1)
+		if (i == SO_BASE)
 			printf("+\n");
 		else
 			printf("+---");

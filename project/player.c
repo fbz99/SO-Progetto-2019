@@ -51,7 +51,7 @@ int main(int argc, const char *args[])
         args1[0] = stringa;
         matrice[rand_pos] = giocatore.giocatore;
 
-        printf("Giocatore: %c\n", giocatore.giocatore);
+        /*printf("Giocatore: %c\n", giocatore.giocatore);*/
 
         switch (ptr[i] = fork())
         {
@@ -69,7 +69,6 @@ int main(int argc, const char *args[])
             break;
         }
     }
-    matrice[0] = 65;
     releaseSem(sem_id_mutex, 0);
     while (wait(NULL) != -1);
 }
