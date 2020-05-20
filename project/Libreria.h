@@ -21,12 +21,17 @@
 #define SO_N_MOVES 20
 #define SO_MIN_HOLD_NSEC 10000000
 #define key 12345
+#define key0 44245 /*semidzero*/
+#define key1 55245
 #define key2 22345
 #define key3 33245
-#define key0 44245 /*semidzero*/
+#define key4 66245 /*semidped*/
 #define MSG_LEN 120
 #define key_coda 55245
 #define MSGTYPE_RM 7
+
+/*SEMAFORO IN USO --> 0
+  SEMAFORO DISPONIBILE --> 1*/
 
 void stampa_scacchiera();
 void red();
@@ -107,6 +112,8 @@ int sem_getall(char * my_string, int sem_id);
 
 int aspetta_zero(int sem_id, int sem_num);
 
+int aspetta_uno(int sem_id, int sem_num);
+
 int casuale(int a,int b);
 
 int val_check(int val, int *pos);
@@ -124,5 +131,7 @@ int pos_check(int pos,char * matrix);
 void copiaArray(char a[],char b[]);
 
 char* itoa(int i, char b[]);
+
+void waitPlayers(int sem_array);
 
 void stampaArray();

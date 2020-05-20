@@ -6,22 +6,22 @@ int main()
     int *ptr;
     int flag_n = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int tot = SO_ROUND_SCORE;
-    int max_rand;
+    int max_rand,cont = 0;
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int band, j = 0, rand_pos, pos;
     int tmp = flag;
     int status;
     int *old_pos;
     pid_t wpid;
-    char *args[2];
+    char *args[3];
     char *matrice;
-    char stringa[4];
-    int sem_id_mat, sem_id_mutex, sem_id_zero;
+    char stringa[4],stringa1[4];
+    int sem_id_mat, sem_id_mutex, sem_id_main;
 
     int mat_id = shmget(key, sizeof(int) * (SO_BASE * SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
    
-    /*printf("%d", mat_id);*/
+   
 
     /*for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
         /*matrice[pos] = '0';*/
@@ -37,9 +37,14 @@ int main()
     sem_id_mutex = semget(key3, 1, IPC_CREAT | 0666);
     initSemAvaiable(sem_id_mutex, 0);
 
-    sem_id_zero = semget(key0,1, IPC_CREAT | 0666);
+    sem_id_main = semget(key1, SO_NUM_G, IPC_CREAT | 0666);
+    for (i = 0; i < SO_NUM_G; i++)
+    {
+        initSemInUse(sem_id_main, i);
+        printf("SEMCTL %d\n",semctl(sem_id_main,i,GETVAL));
+    }
 
-    args[1] = NULL;
+    args[2] = NULL;
     ptr = malloc(sizeof(int) * SO_NUM_G);
 
     /*Creazione Giocatori*/
@@ -54,16 +59,21 @@ int main()
         case 0: /*Processo figlio*/
             sprintf(stringa, "%d", i + 1);
             args[0] = stringa;
-            execve("./player", args, NULL);  
+            sprintf(stringa1,"%d",cont);
+            args[1] = stringa1;
+            execve("./player", args, NULL);
             break;
 
             default: 
-                reserveSem(sem_id_zero,0);
+                /* aspetta_zero(sem_id_main,i);*/
+                /*printf("CONT: %d\n",cont);*/
+                cont++;
                 break;
         }
     }
-    /*aspetta_zero(sem_id_zero,SO_NUM_G);*/
+    for(i=0;i<SO_NUM_G;i++) reserveSem(sem_id_main,i);
     /*while ((wpid = wait(&status)) > 0){ */
+    /*waitPlayers(sem_id_main);*/
 
     old_pos = malloc(sizeof(int) * flag);
     srand(time(NULL));
@@ -91,9 +101,11 @@ int main()
         }
         tmp--;
     }
-    stampa_scacchiera();
+    /*stampa_scacchiera();*/
+    printf("MATRICE\n");
    /* stampaArray(matrice);*/
     
     while (wait(NULL) != -1);
     shmctl(mat_id,IPC_RMID,NULL); /*Rimozione memoria condivisa*/
+    for(i=0;i<SO_NUM_G;i++) semctl(sem_id_main,i,IPC_RMID);
 }

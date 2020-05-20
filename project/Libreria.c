@@ -162,6 +162,19 @@ int aspetta_zero(int sem_id, int sem_num)
 
 	return semop(sem_id, &sops, 1);
 }
+
+int aspetta_uno(int sem_id, int sem_num)
+{
+	struct sembuf sops;
+
+	sops.sem_num = sem_num;
+	sops.sem_op = 1;
+	sops.sem_flg = 1;
+
+	return semop(sem_id, &sops, 1);
+}
+
+
 int casuale(int a, int b)
 {
 	return rand() % (a - b + 1) + b;
@@ -253,6 +266,15 @@ void copiaArray(char a[], char b[])
 		a[i] = b[i];
 	}
 }
+
+void waitPlayers(int sem_array){
+	int i;
+	for(i = 0; i < SO_NUM_G; i++){
+		aspetta_zero(sem_array,i);
+	}
+}
+
+
 
 void stampaArray(char * matrice){
 	int i,j;
