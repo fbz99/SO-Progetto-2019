@@ -6,7 +6,7 @@ int main()
     int *ptr;
     int flag_n = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int tot = SO_ROUND_SCORE;
-    int max_rand, cont = 0;
+    int max_rand,cont = 0;
     int flag = (rand() % (SO_FLAG_MAX - SO_FLAG_MIN + 1)) + SO_FLAG_MIN;
     int band, j = 0, rand_pos, pos;
     int tmp = flag;
@@ -15,14 +15,16 @@ int main()
     pid_t wpid;
     char *args[2];
     char *matrice;
-    char stringa[4], stringa1[50];
+    char stringa[4],stringa1[50];
     int sem_id_mat, sem_id_mutex, sem_id_main;
 
     int mat_id = shmget(key, sizeof(int) * (SO_BASE * SO_ALTEZZA), IPC_CREAT | 0666);
     matrice = shmat(mat_id, NULL, 0);
+   
+   
 
     /*for (pos = 0; pos <= size; pos++) /*SETTAGGIO MATRICE*/
-    /*matrice[pos] = '0';*/
+        /*matrice[pos] = '0';*/
 
     /*Creazione semafori sulla matrice*/
     sem_id_mat = semget(key2, size, IPC_CREAT | 0666);
@@ -33,11 +35,12 @@ int main()
 
     /*Creazione array di semafori per attesa dei giocatori (tutti a 0 tranne il primo)*/
     sem_id_mutex = semget(key3, 2, IPC_CREAT | 0666);
-
+    
+    /*sem_getall(stringa1,sem_id_mutex);*/
+    printf("sem id mutex %s\n\n",stringa1);
     initSemAvaiable(sem_id_mutex, 0);
+    /*printf("Paninobello - %d\n",semctl(sem_id_mutex,0,GETVAL));*/
     initSemInUse(sem_id_mutex, 1);
-    printf("Paninobello 0 - %d\n", semctl(sem_id_mutex, 0, GETVAL));
-    printf("Paninobello 1 - %d\n", semctl(sem_id_mutex, 1, GETVAL));
     /*sem_id_main = semget(key1, SO_NUM_G, IPC_CREAT | 0666);
     for (i = 0; i < SO_NUM_G; i++)
     {
@@ -63,11 +66,11 @@ int main()
             execve("./player", args, NULL);
             break;
 
-        default:
-            /* aspetta_zero(sem_id_main,i);*/
-            /*printf("CONT: %d\n",cont);*/
-            cont++;
-            break;
+            default: 
+                /* aspetta_zero(sem_id_main,i);*/
+                /*printf("CONT: %d\n",cont);*/
+                cont++;
+                break;
         }
     }
     /*for(i=0;i<SO_NUM_G;i++) reserveSem(sem_id_main,i);*/
@@ -78,7 +81,7 @@ int main()
 
     old_pos = malloc(sizeof(int) * flag);
     srand(time(NULL));
-    for (i = 0; i < flag; i++) /*SISTEMAZIONE BANDIERINE IN POSIZIONI CASUALI*/
+    for (i = 0; i < flag; i++)          /*SISTEMAZIONE BANDIERINE IN POSIZIONI CASUALI*/
     {
 
         rand_pos = casuale(size, 0);
@@ -103,14 +106,13 @@ int main()
         tmp--;
     }
     /*DEVO ASPETTARE FINISCANO ENTRAMBI I GIOCATORI PER STAMPARE E LE BANDIERINE SIANO POSIZIONATE*/
-
+    
     stampa_scacchiera();
     /*printf("MATRICE\n");*/
-    /* stampaArray(matrice);*/
-
+   /* stampaArray(matrice);*/
+    
     /*while (wait(NULL) != -1);*/
-    while ((wpid = wait(&status)) > 0)
-        shmctl(mat_id, IPC_RMID, NULL); /*Rimozione memoria condivisa*/
-    for (i = 0; i < SO_NUM_G; i++)
-        semctl(sem_id_main, i, IPC_RMID);
+    while((wpid = wait(&status)) > 0)
+    shmctl(mat_id,IPC_RMID,NULL); /*Rimozione memoria condivisa*/
+    for(i=0;i<SO_NUM_G;i++) semctl(sem_id_main,i,IPC_RMID);
 }
